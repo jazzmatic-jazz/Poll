@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{%block title%} Home {%endblock title%}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    Hi {{user.username}}!!
+
+    {% if latest_question_list %}
+        <ul>
+        {% for question in latest_question_list %}
+        <li><a href="{% url 'detail' question.id %}">{{ question.question }}</a></li>
+        {% endfor %}
+        </ul>
+        <br>
+
+    <p> <a href="{% url 'profile' %}">Profile</a></p>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
+
+{% else %}
+    
+    <p>You are not Logged In</p>
+    <a href="{% url 'login' %}">Log In</a> | 
+    <a href="{% url 'register' %}">Sign Up</a>
+
+{%endif%}    
+
+{% endblock content %}

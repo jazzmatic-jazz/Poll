@@ -1,0 +1,8 @@
+env/
+app/tests.py
+polls/.env
+db.sqlite3
+app/migrations/
+app/__pycache__/
+users/__pycache__/
+users/migrations/

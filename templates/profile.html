@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{%block title%} Profile {%endblock title%}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    Name: {{user.username}}
+<br>
+    Age: {{user.age}}
+<br>
+    Email: {{user.email}}
+<br>
+Questions Posted By you are: <br>
+
+<ul>
+<li>
+    {{latest_question_list}}
+
+</li>
+</ul>
+
+
+    <p><a href="{% url 'logout' %}">Log Out</a></p>
+
+
+
+{%endif%}    
+
+{% endblock content %}
